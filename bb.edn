@@ -1,4 +1,11 @@
 {:deps {io.github.teodorlu/bb-timemachine {:local/root "."}}
 
  :tasks
- {test (shell "clojure -M:dev -m kaocha.runner")}}
+ {test (shell "clojure -M:dev -m kaocha.runner")
+
+  timemachine
+  {:requires ([teodorlu.bb-timemachine])
+   :task (apply teodorlu.bb-timemachine/timemachine *command-line-args*)}
+
+  test-latest-commit
+  (shell "bb timemachine HEAD -- bb test")}}
