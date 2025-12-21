@@ -1,4 +1,4 @@
-(ns example
+(ns repl
   (:require [babashka.fs :as fs]
             [babashka.process :as p]
             [clojure.string :as str]

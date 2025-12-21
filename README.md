@@ -1,28 +1,24 @@
 # bb-timemachine
 
-Run functions and evaluate shell commands at previous points in Git-time.
+Run code back in Git-time.
 
 ## Rationale
 
-Ever forgot to commit a file before pushing
-
+Ever forgot to commit a file before pushing?
 I have.
 It sucks!
-And I'd rather not.
 
-So what went wrong?
-Your working directory was fine.
-But the commit you pushed was *not*.
+We can avoid that by testing the code you would actually push.
+`bb-timemachine` lets you test the *latest commit*, rather than your current directory.
+It can also run arbitrary functions or arbitrary shell commands at arbitrary points in Git-time.
 
-`bb-timemachine` lets you test the *latest commit*, rather than your current directory with changes.
+## `bb test-latest-commit`
 
-It can also run arbitrary functions or arbitrary shell commands in arbitrary points in Git-time, but so far, it's purpose has been to catch me when I forget to commit files.
-
-## Use it as a Babashka task
+Write a [Babashka task] to test your latest commit like this:
 
 ```clojure
 ;; bb.edn
-{:deps {io.github.teodorlu/bb-timemachine {:git/sha ",,,"}}
+{:deps {io.github.teodorlu/bb-timemachine {:git/tag "v1.0.0" :git/sha "d4be5"}}
 
  :tasks
  {test
@@ -34,11 +30,11 @@ It can also run arbitrary functions or arbitrary shell commands in arbitrary poi
 
   test-latest-commit
   (shell "bb timemachine HEAD -- bb test")}}
-
 ```
 
-See the Babashka book for more information about Babashka tasks:
-https://book.babashka.org/#tasks
+Substitute `(shell "YOUR TEST COMMAND")` for code that runs your test suite.
+
+[Babashka task]: https://book.babashka.org/#tasks
 
 ## `teodorlu.bb-timemachine/do-at`
 

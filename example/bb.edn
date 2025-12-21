@@ -1,0 +1,12 @@
+{:deps {io.github.teodorlu/bb-timemachine {:git/tag "v1.0.0" :git/sha "d4be5"}}
+
+ :tasks
+ {test
+  (assert (contains? #{:cats :dogs :donkeys} :donkeys))
+
+  timemachine
+  {:requires ([teodorlu.bb-timemachine])
+   :task (apply teodorlu.bb-timemachine/timemachine *command-line-args*)}
+
+  test-latest-commit
+  (shell "bb timemachine HEAD -- bb test")}}
