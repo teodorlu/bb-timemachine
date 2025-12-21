@@ -5,21 +5,17 @@
             [clojure.string :as str]))
 
 (defn rev-parse [dir git-revision]
-  (-> (p/shell {:out :string
-                :err :discard
-                :dir dir}
+  (-> (p/shell {:out :string :err :discard :dir dir}
                "git rev-parse" git-revision)
       :out str/trim))
 
-(defn worktree-add [dir path commit-ish & [extra-process-opts]]
-  (-> (p/process (merge {:dir dir} extra-process-opts)
-                 "git worktree add" path commit-ish)
-      p/check))
+(defn worktree-add [dir path commit-ish]
+  (p/shell {:dir dir :out :discard :err :discard}
+           "git worktree add" path commit-ish))
 
-(defn worktree-remove [dir worktree & [extra-process-opts]]
-  (-> (p/process (merge {:dir dir} extra-process-opts)
-                 "git worktree remove" worktree)
-      p/check))
+(defn worktree-remove [dir worktree]
+  (p/shell {:dir dir :out :discard :err :discard}
+           "git worktree remove" worktree))
 
 (defn ^{:indent 1} do-at
   "Pass handle-fn a dir argument where dir is the Git repo checked out at given
