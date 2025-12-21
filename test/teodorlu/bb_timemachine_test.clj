@@ -3,6 +3,8 @@
             [clojure.test :refer [deftest is testing]]
             [teodorlu.bb-timemachine :as timemachine]))
 
+(set! *warn-on-reflection* true)
+
 (def initial-commit-sha "2bce149ff003d8c372db63717459ca8c3d241508")
 
 (deftest worktree-add-remove

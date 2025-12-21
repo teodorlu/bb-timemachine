@@ -1,1 +1,4 @@
-{:deps {io.github.teodorlu/bb-timemachine {:local/root "."}}}
+{:deps {io.github.teodorlu/bb-timemachine {:local/root "."}}
+
+ :tasks
+ {test (shell "clojure -M:dev -m kaocha.runner")}}
