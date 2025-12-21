@@ -32,9 +32,16 @@ Write a [Babashka task] to test your latest commit like this:
   (shell "bb timemachine HEAD -- bb test")}}
 ```
 
-Substitute `(shell "YOUR TEST COMMAND")` for code that runs your test suite.
-
 [Babashka task]: https://book.babashka.org/#tasks
+
+Substitute `(shell "YOUR TEST COMMAND")` for code that runs your test suite.
+Then run it!
+
+```
+bb test-latest-commit
+```
+
+(which is just shorthand for `bb timemachine HEAD -- bb test`).
 
 ## `teodorlu.bb-timemachine/do-at`
 
