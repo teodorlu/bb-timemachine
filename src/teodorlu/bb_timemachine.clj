@@ -18,11 +18,10 @@
            "git worktree remove" worktree))
 
 (defn ^{:indent 1} do-at
-  "Pass handle-fn a dir argument where dir is the Git repo checked out at given
-  Git revision
+  "Run a function with access to this Git repo at a previous point in time
 
   git-revision: eg HEAD or 91fa7c32 or a branch name
-  handle-fn: function of directory where files have been checked out."
+  handle-fn: function of directory where repo is available"
   [git-revision handle-fn]
   (let [tempdir (fs/create-temp-dir)
         repo-dir "."
@@ -37,10 +36,11 @@
 (defn ^{:indent 1 :export true} timemachine
   "Entrypoint from babashka tasks.
 
-  Encourages this pattern of usage:
+  Intended to be used like this:
 
     bb timemachine HEAD -- ls
-    bb timemachine HEAD -- pwd"
+    bb timemachine HEAD -- pwd
+    bb timemachine HEAD -- bb test"
   [revision _ & shell-command-args]
   (do-at revision
     (fn [dir] (apply p/shell {:dir dir} shell-command-args))))
