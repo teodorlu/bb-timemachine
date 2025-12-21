@@ -18,7 +18,7 @@ Write a [Babashka task] to test your latest commit like this:
 
 ```clojure
 ;; bb.edn
-{:deps {io.github.teodorlu/bb-timemachine {:git/tag "v1.0.0" :git/sha "d4be5"}}
+{:deps {io.github.teodorlu/bb-timemachine {:git/tag "v1.0.1" :git/sha "e684c"}}
 
  :tasks
  {test
