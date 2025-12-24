@@ -77,3 +77,11 @@ beginning-of-time
                                             (map str))))
 ;; => ("src/teodorlu" "src/teodorlu/bb_timemachine.clj")
 ```
+
+## Gratitude
+
+Thank you to Michiel Borkent for making great tools like Babashka, babashka/fs and babashka process.
+And for helpfully guiding me in their proper usage.
+
+Thank you to Mathias, Sigmund, Ole Marius, Christian and Magnar for being great colleagues.
+Without you lot being willing to try new ways of working, bb-timemachine would not exist!
