@@ -78,6 +78,16 @@ beginning-of-time
 ;; => ("src/teodorlu" "src/teodorlu/bb_timemachine.clj")
 ```
 
+## [Consider in-lining]
+
+[Consider in-lining]: https://play.teod.eu/consider-inlining/
+
+In-lining `bb-timemachine` may be better than adding the dependency:
+
+1. You get more direct access to the code, and can understand better how it works
+2. You may tweak the time travel, for example to account for Git submodules.
+3. The code is only about 50 lines.
+
 ## Gratitude
 
 Thank you to Michiel Borkent for making great tools like Babashka, babashka/fs and babashka process.
